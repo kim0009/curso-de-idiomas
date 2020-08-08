@@ -11,6 +11,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\LanguagesCourse.Entity\LanguagesCourse.Entity.csproj" />
+    <ProjectReference Include="..\LanguagesCourse.Mapping\LanguagesCourse.Mapping.csproj" />
   </ItemGroup>
 
 </Project>

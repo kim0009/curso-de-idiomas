@@ -1,10 +1,7 @@
 ﻿using LanguagesCourse.Entity;
-using LanguagesCourse.Model.Dto;
 using LanguagesCourse.Repository.Base;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace LanguagesCourse.Bunisess.Impl
 {
@@ -23,10 +20,34 @@ namespace LanguagesCourse.Bunisess.Impl
             return query.Any();
         }
 
-        public CourseDto GetById(int id)
+        public Course GetById(int id)
         {
-            _unitOfWork.GetRepository<Course>().GetById(id);
-            return null;
+            return _unitOfWork.GetRepository<Course>().GetById(id);
+        }
+
+        public List<Course> GetAll()
+        {
+            var repository = _unitOfWork.GetRepository<Course>();
+            return repository.Get(includes: "StudentHistory").ToList();
+        }
+        public void Save(Course course)
+        {
+            var repository = _unitOfWork.GetRepository<Course>();
+            repository.Save(course);
+            _unitOfWork.Commit();
+        }
+
+        public void Update(Course course)
+        {
+            var repository = _unitOfWork.GetRepository<Course>();
+            repository.Update(course);
+            _unitOfWork.Commit();
+        }
+
+        public void Delete(int id)
+        {
+            _unitOfWork.GetRepository<Course>().Delete(id);
+            _unitOfWork.Commit();
         }
     }
 }

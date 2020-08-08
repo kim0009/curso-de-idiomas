@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace LanguagesCourse.Configuration.Map
+namespace LanguagesCourse.Mapping
 {
     public class CourseMap : IEntityTypeConfiguration<Course>
     {

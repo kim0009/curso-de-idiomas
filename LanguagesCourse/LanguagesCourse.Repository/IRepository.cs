@@ -7,7 +7,7 @@ namespace LanguagesCourse.Repository
 {
     public interface IRepository<TEntity> where TEntity : class
     {
-        IQueryable<TEntity> Get(Expression<Func<TEntity, bool>> expression = null);
+        IQueryable<TEntity> Get(Expression<Func<TEntity, bool>> expression = null, params string[] includes);
 
         TEntity GetById(int id);
 
@@ -18,5 +18,7 @@ namespace LanguagesCourse.Repository
         void Update(TEntity entity);
         
         void UpdateMany(ICollection<TEntity> entities);
+
+        void Delete(int id);
     }
 }

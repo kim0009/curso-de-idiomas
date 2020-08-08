@@ -18,17 +18,6 @@ namespace LanguagesCourse.Repository
             _dbSet = languagesCourseModelContext.Set<TEntity>();
         }
 
-        public IQueryable<TEntity> Get(Expression<Func<TEntity, bool>> expression = null)
-        {
-            IQueryable<TEntity> query = _dbSet;
-            if (expression != null)
-            {
-                query = query
-                    .Where(expression);
-            }
-            return query;
-        }
-        
         public TEntity GetById(int id)
         {
             //IQueryable<TEntity> query = _dbSet;
@@ -79,8 +68,7 @@ namespace LanguagesCourse.Repository
 
         public void Delete(int id)
         {
-            _context.Find<TEntity>(id);
-            _context.Remove(id);
+            _context.Remove(_context.Find<TEntity>(id));
         }
     }
 }

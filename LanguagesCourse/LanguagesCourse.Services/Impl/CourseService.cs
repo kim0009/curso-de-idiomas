@@ -1,5 +1,8 @@
-﻿using LanguagesCourse.Bunisess;
+﻿using AutoMapper;
+using LanguagesCourse.Bunisess;
+using LanguagesCourse.Entity;
 using LanguagesCourse.Model.Dto;
+using System.Collections.Generic;
 
 namespace LanguagesCourse.Services.Impl
 {
@@ -7,9 +10,12 @@ namespace LanguagesCourse.Services.Impl
     {
         private readonly ICourseBunisess _courseBunisess;
 
-        public CourseService(ICourseBunisess courseBunisess)
+        private readonly IMapper _mapper;
+        
+        public CourseService(ICourseBunisess courseBunisess, IMapper mapper)
         {
             _courseBunisess = courseBunisess;
+            _mapper = mapper;
         }
 
         public string Test()
@@ -23,19 +29,28 @@ namespace LanguagesCourse.Services.Impl
 
         public CourseDto Get(int id)
         {
-            _courseBunisess.GetById(id);
-            return null;
+            return _mapper.Map<CourseDto>(_courseBunisess.GetById(id)); 
         }
 
-        public bool Delete(int id)
+        public  void Delete(int id)
         {
-            return false;
+            _courseBunisess.Delete(id);
+        }
+
+        public List<CourseDto> GetAll()
+        {
+            return _mapper.Map<List<CourseDto>>(_courseBunisess.GetAll());
         }
 
         public CourseDto Save(CourseDto courseDto)
         {
-            //_courseRepository.Save();
-            throw new System.NotImplementedException();
+            _courseBunisess.Save(_mapper.Map<CourseDto, Course>(courseDto));
+            return null;
+        }
+
+        public void Update(CourseDto courseDto)
+        {
+            _courseBunisess.Update(_mapper.Map<CourseDto, Course>(courseDto));
         }
     }
 }
