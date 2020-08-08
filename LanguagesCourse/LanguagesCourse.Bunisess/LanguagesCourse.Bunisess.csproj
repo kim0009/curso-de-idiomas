@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\LanguagesCourse.Model\LanguagesCourse.Model.csproj" />
+    <ProjectReference Include="..\LanguagesCourse.Repository\LanguagesCourse.Repository.csproj" />
+  </ItemGroup>
+
+</Project>

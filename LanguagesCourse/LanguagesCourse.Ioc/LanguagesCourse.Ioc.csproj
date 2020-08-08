@@ -1,0 +1,17 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="2.2.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\LanguagesCourse.Configuration\LanguagesCourse.Configuration.csproj" />
+    <ProjectReference Include="..\LanguagesCourse.Repository\LanguagesCourse.Repository.csproj" />
+    <ProjectReference Include="..\LanguagesCourse.Services\LanguagesCourse.Services.csproj" />
+  </ItemGroup>
+
+</Project>
