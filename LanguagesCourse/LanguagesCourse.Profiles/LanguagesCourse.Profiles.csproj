@@ -6,10 +6,11 @@
 
   <ItemGroup>
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="7.0.0" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="2.2.0" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\LanguagesCourse.Bunisess\LanguagesCourse.Bunisess.csproj" />
+    <ProjectReference Include="..\LanguagesCourse.Entity\LanguagesCourse.Entity.csproj" />
     <ProjectReference Include="..\LanguagesCourse.Model\LanguagesCourse.Model.csproj" />
   </ItemGroup>
 

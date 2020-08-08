@@ -1,11 +1,8 @@
-﻿using LanguagesCourse.Configuration.Map;
-using LanguagesCourse.Entity;
+﻿using LanguagesCourse.Entity;
+using LanguagesCourse.Mapping;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
-using System;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Reflection;
 
 namespace LanguagesCourse.Configuration
 {
@@ -47,21 +44,10 @@ namespace LanguagesCourse.Configuration
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            var TypeMappging1 = Assembly.GetExecutingAssembly().GetTypes();
-            var TypeMappging = Assembly.GetExecutingAssembly().GetTypes()
-                .Where(x => x.IsClass && x.Namespace.Equals("LanguagesCourse.Configuration.Map"))
-                .ToList();
-
-            foreach (var mapping in TypeMappging)
-            {
-                dynamic mappingClass = Activator.CreateInstance(mapping);
-                modelBuilder.ApplyConfiguration(mappingClass);
-            }
-
-            //modelBuilder.ApplyConfiguration<User>(new UserMap());
-            //modelBuilder.ApplyConfiguration<Student>(new StudentMap());
-            //modelBuilder.ApplyConfiguration<StudentHistory>(new StudentHistoryMap());
-            //modelBuilder.ApplyConfiguration<Course>(new CourseMap());
+            modelBuilder.ApplyConfiguration<User>(new UserMap());
+            modelBuilder.ApplyConfiguration<Student>(new StudentMap());
+            modelBuilder.ApplyConfiguration<StudentHistory>(new StudentHistoryMap());
+            modelBuilder.ApplyConfiguration<Course>(new CourseMap());
         }
     }
 }

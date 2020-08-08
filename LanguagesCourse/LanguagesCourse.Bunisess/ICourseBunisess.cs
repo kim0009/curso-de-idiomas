@@ -1,4 +1,5 @@
-﻿using LanguagesCourse.Model.Dto;
+﻿using LanguagesCourse.Entity;
+using System.Collections.Generic;
 
 namespace LanguagesCourse.Bunisess
 {
@@ -6,6 +7,14 @@ namespace LanguagesCourse.Bunisess
     {
         bool CheckExistence(int id);
 
-        CourseDto GetById(int id);
+        Course GetById(int id);
+
+        List<Course> GetAll();
+
+        void Save(Course course);
+
+        void Update(Course course);
+
+        void Delete(int id);
     }
 }

@@ -6,11 +6,11 @@ namespace LanguagesCourse.Repository.Base
 {
     public class UnitOfWork : IUnitOfWork, IDisposable 
     {
-        private readonly LanguagesCourseModelContext _context;
-
-        private Dictionary<string, object> _repositories;
 
         private bool disposed = false;
+        private readonly LanguagesCourseModelContext _context;
+        private Dictionary<string, object> _repositories;
+
 
         public UnitOfWork(LanguagesCourseModelContext context)
         {
@@ -24,7 +24,7 @@ namespace LanguagesCourse.Repository.Base
 
             if (!_repositories.ContainsKey(className))
             {
-                _repositories.Add(className, Activator.CreateInstance(typeof(IRepository<T>), _context));
+                _repositories.Add(className, Activator.CreateInstance(typeof(Repository<T>), _context));
             }
             return (IRepository<T>)_repositories[className];
         }

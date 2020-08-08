@@ -1,4 +1,6 @@
-﻿using LanguagesCourse.Ioc;
+﻿using AutoMapper;
+using LanguagesCourse.Ioc;
+using LanguagesCourse.Profiles;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -11,9 +13,10 @@ namespace LanguagesCourse.Api
             services.RegisterService();
             services.RegisterBunisess();
             services.RegisterContext();
+            services.RegisterProfile();
 
             // services.AddDbContext<LanguagesCourseModelContext>(options =>
-            //    options.UseSqlServer(this.configuration.GetConnectionString("aluno_online"))
+            //    options.UseSqlServer(this.configuration.GetConnectionString("db"))
             //);
 
             services.AddCors();

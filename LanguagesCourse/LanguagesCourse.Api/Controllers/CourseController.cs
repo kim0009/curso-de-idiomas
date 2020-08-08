@@ -1,9 +1,7 @@
-﻿using LanguagesCourse.Services;
+﻿using LanguagesCourse.Model.Dto;
+using LanguagesCourse.Services;
 using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using Microsoft.AspNetCore.Routing;
 
 namespace LanguagesCourse.Api.Controllers
 {
@@ -20,17 +18,42 @@ namespace LanguagesCourse.Api.Controllers
 
 
         [HttpPost]
-        public ActionResult Save()
+        public ActionResult Save([FromBody] CourseDto courseDto)
         {
-            return Ok();
+            _courseService.Save(courseDto);
+            return StatusCode(201, "Salvo com sucesso");
+        }
+        
+        [HttpPut]
+        public ActionResult Update([FromBody] CourseDto courseDto)
+        {
+            _courseService.Update(courseDto);
+            return StatusCode(201, "Salvo com sucesso");
         }
 
+        //[HttpGet]
+        //public ActionResult Test()
+        //{
+        //    return Ok(_courseService.GetAll());
+        //}
+         
         [HttpGet]
-        public ActionResult Test()
+        public ActionResult Get()
         {
-            return Ok(_courseService.Test());
+            return Ok(_courseService.GetAll());
+        }
+        
+        [HttpGet("{id}")]
+        public ActionResult GetById(int id)
+        {
+            return Ok(_courseService.Get(id));
         }
 
-
+        [HttpDelete("{id}")]
+        public ActionResult Delete(int id)
+        {
+            _courseService.Delete(id);
+            return Ok("Excluido com sucesso");
+        }
     }
 }
